@@ -38,6 +38,9 @@ print(lst1 is lst2) # output: False
 ```
 In above, `lst1` and `lst2` refers to different memory locations (two pieces of the same value).
 
+> Python values are deleted when nothing references them
+
+When there is no name that refers to a value, the value is picked up by the Python garbage collector and deleted automatically.
 
 > Changes in a value will be common to all of its names
 
@@ -115,10 +118,15 @@ In above, `b` is a reference to `5` not to `a`. If you change the value of `a` (
 > A variable or name can refer to anything
 
 ```python
-x = 3       # x refers to an int
-x = 3.4     # now x refers to a float
-x = 'str'   # now x refers to a string
-x = [1, 2]  # now x refers to a list
+x = 3               # x refers to an int
+x = 3.4             # now x refers to a float
+x = 'str'           # now x refers to a string
+x = [1, 2]          # now x refers to a list
+def x():            # now x refers to a function
+    return True
+
+class x(object):    # now x refers to a class
+    pass
 ```
 
 > Python names or variables have no type
@@ -150,9 +158,9 @@ s = 'I am a string'
 ```
 The literal `I am a string` is a value, and when it is used in Python i.e written within quotes (e.g `'I am a string'`), it's an (`str`) object.
 
-All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
-
 > In python, everything is an object.
+
+All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
 
 
 
@@ -186,7 +194,7 @@ In above, `a = 2 * 3` is not an expression but an statement while `2 * 3` is an 
 
 # Assignment
 
-Assignment is an statement that assigns a name to the reference to a value or object.
+> Assignment is an statement that assigns a name to the reference to a value or object.
 
 ```python
 var = 'A sample string'
@@ -292,7 +300,36 @@ Each of the above is an assignment.
 
 The scope for a variable or name is the region where it is accessible or visible.
 
+> Values don't have any scope, only names have
 
+A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local i.e they can be either visible to all or only to a certain region.
+
+> Global names are accessible to local scope but not modifiable
+
+```python
+x = 4
+def f1():
+    if x == 4:
+        return x # returning the global x
+    else:
+        return 0
+
+def f2():
+    x = x + 3 # UnboundLocalError: local variable 'x' referenced before assignment
+    return x
+
+f1() # output: 4
+f2() # UnboundLocalError: local variable 'x' referenced before assignment
+```
+
+> Global names become local names if assigned anew
+
+```python
+x = 4
+def f():
+    x = 3 # This x is no longer a global name
+    return x # returning the local x
+```
 
 
 # Function
