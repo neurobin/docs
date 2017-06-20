@@ -199,7 +199,7 @@ In above, `a = 2 * 3` is not an expression but an statement while `2 * 3` is an 
 ```python
 var = 'A sample string'
 ```
-Here, the name *var* refers to the `str` object `A sample string`.
+Here, the name *var* refers to the `str` object `'A sample string'`.
 
 > Assignment never copies data
 
