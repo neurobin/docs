@@ -336,6 +336,25 @@ f(x)        # changing x in-place
 print(x)    # output: [1, 2, 3, 4]
 ```
 
+> Functions can take anything and return anything
+
+Functions can take and return objects. Everything in Python is an object, thus functions can return anything and take anything as argument.
+
+```python
+class X(object):
+    pass
+
+def f(arg):
+    print(arg)
+    return arg
+
+f(12)       # output: 12
+f('string') # output: 'string'
+f([1, 2])   # output: [1, 2]
+f(f)        # output: <function f at 0x7f15e203a8c0>
+f(X)        # output: <class '__main__.X'>
+```
+In python functions are first class objects.
 
 
 
@@ -360,7 +379,7 @@ In above, `a`, `b` and `c` are parameters.
 
 The scope for a variable or name is the region where it is accessible or visible.
 
-> Values don't have any scope, only names have
+> Values don't have any scope, only names have scopes
 
 A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local.
 
