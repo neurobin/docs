@@ -27,7 +27,7 @@ s1 = 'string'
 s2 = 'string'
 s1 is s2 # output: True
 ```
-Mutable values are always created (allocated) anew:
+> Mutable values are always created (allocated) anew
 
 ```python
 lst1 = [1, 2]
@@ -72,13 +72,27 @@ x = x + 1
 print(x) # output: 7
 print(y) # output: 6
 ```
+In above, `x + 1` creates a new value (`7`) and a reference to this new value is assigned to `x` while `y` still retains the reference to the previous value.
+
+## Mutable values
+
+Values that can be changed in-place are mutable.
+
+```python
+lst1 = [1, 2]
+lst2 = lst1
+lst1.append(3)
+print(lst1) # output: [1, 2, 3]
+print(lst2) # output: [1, 2, 3]
+```
+Here, the `append()` method changes the list in-place, thus no new list is being created.
 
 
 # Variable, Name or Reference
 
 Python variables are different from variables in other programming languages like C++, Java etc.
 
-A python *variable* (or *name*) is a just reference to a value. A variable does not store the value, rather it is just a reference to the memory location where the value is stored.
+A python *variable* (or *name*) is just a reference to a value. A variable does not store the value, rather it is just a reference to the memory location where the value is stored.
 
 > Multiple names can refer to a single value.
 
@@ -102,13 +116,18 @@ In above, `b` is a reference to `5` not to `a`. If you change the value of `a` (
 
 In python, everything that can be assigned to a variable or passed as an argument to a function is an object. Thus values themselves are objects, e.g `5` is an `int` object, `'I am a string'` is an `str` object etc.
 
-> All values are objects but not all objects are values
+> All values can be objects but not all objects can be values
 
 ```python
 import sys
 print(sys.path)
 ```
 In above, `sys` is an object but it's not a value.
+
+```python
+s = 'I am a string'
+```
+The literal `I am a string` is a value, and when it is written within quotes (e.g `'I am a string'`), it's an (`str`) object.
 
 All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
 
@@ -171,8 +190,6 @@ Python assignment makes a new reference/name without any copy:
 object1 = object2
 # object1 refers the same thing as object2
 ```
-
-> 
 
 
 # Function
