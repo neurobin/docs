@@ -16,7 +16,7 @@ One does not need to manage memory for the values. Python automatically allocate
 ```python
 a = 9
 b = 9
-a is b # output: True
+print(a is b) # output: True
 ```
 In above, `9` is stored only once and have only one memory address, thus `a` and `b` both refers to the same memory location.
 
@@ -25,14 +25,14 @@ In above, `9` is stored only once and have only one memory address, thus `a` and
 ```python
 s1 = 'string'
 s2 = 'string'
-s1 is s2 # output: True
+print(s1 is s2) # output: True
 ```
 > Mutable values are always created (allocated) anew
 
 ```python
 lst1 = [1, 2]
 lst2 = [1, 2]
-lst1 is lst2 # output: False
+print(lst1 is lst2) # output: False
 ```
 In above, `lst1` and `lst2` refers to different memory locations (two pieces of the same value).
 
@@ -110,7 +110,18 @@ b = a
 ```
 In above, `b` is a reference to `5` not to `a`. If you change the value of `a` (`a = 6` or whatever), `b` will still refer to `5`.
 
+> A variable or name can refer to anything
 
+```python
+x = 3       # x refers to an int
+x = 3.4     # now x refers to a float
+x = 'str'   # now x refers to a string
+x = [1, 2]  # now x refers to a list
+```
+
+> Python names or variables have no type
+
+Python is dynamically typed i.e a name or variable can refer to any type of value at any time. For example, *x* can refer to an int, a float, a list, an arbitrary user define type or any type at all.
 
 # Object
 
@@ -127,7 +138,7 @@ In above, `sys` is an object but it's not a value.
 ```python
 s = 'I am a string'
 ```
-The literal `I am a string` is a value, and when it is written within quotes (e.g `'I am a string'`), it's an (`str`) object.
+The literal `I am a string` is a value, and when it is used in Python i.e written within quotes (e.g `'I am a string'`), it's an (`str`) object.
 
 All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
 
@@ -191,8 +202,107 @@ object1 = object2
 # object1 refers the same thing as object2
 ```
 
+> Assignment to a different value always updates the reference
+
+```python
+x = 7
+y = x
+x = x + 2
+print(x) # output: 9
+print(y) # output: 7
+```
+The reference *x* was updated to refer to a new value `x + 2`.
+
+> Different names assigned to the same **immutable** value directly by the value (not name) can share the reference
+
+```python
+x = 2
+y = 2
+print(x is y) # output: True
+s1 = 'string'
+s2 = 'string'
+print(s1 is s2) # output: True
+```
+In above, both *x* and *y* refer to the same object (same for *s1* and *s2*).
+
+> Different names assigned to the same **mutable** value directly by the value (not name) always refer to different values altogether
+
+```python
+lst1 = [1, 2]
+lst2 = [1, 2]
+print(lst1 is lst2) # output: False
+```
+In above, *lst1* and *lst2* refer to different objects.
+
+> Different names assigned by another name always refer to the same value regardless if the value is mutable or immutable
+
+```python
+x = 2
+y = x
+lst1 = [1, 2]
+lst2 = lst1
+print(x)    # output: 2
+print(y)    # output: 2
+print(lst1) # output: [1, 2]
+print(lst2) # output: [1, 2]
+```
+
+So far, we have seen assignment with only the assignment operator `=`.
+
+> There are lots of ways of assignment aside from the assignment operator `=`
+
+```python
+# assigns the name x to each item from an iterator in a loop
+for x in iterator
+
+# assigns a class to the name x
+class x(...):
+
+# assigns a function to the name x
+def x(...):
+
+# assigns the value 12 to a function parameter
+func(12) # function call
+
+# assigns the value referred by myvar to a function parameter
+# i.e it's creating an alias for myvar in function scope
+func(myvar) #function call
+
+# assigns an object to the name x
+... as x
+
+# assigns a module object to the name x
+import x
+```
+Each of the above is an assignment.
+
+
+
+# Scope
+
+The scope for a variable or name is the region where it is accessible or visible.
+
+
+
 
 # Function
 
 Function is an isolated block of code that performs some operation.
 
+
+
+
+# Argument & Parameter
+
+Arguments are values that are passed with a function while Parameters are names that are assigned to the references of those values.
+
+```python
+func(12, 13, 14)
+```
+In above, `12`, `13` and `14` are arguments.
+
+```python
+def func(a, b, c):
+    return a + b - c
+```
+In above, `a`, `b` and `c` are parameters.
