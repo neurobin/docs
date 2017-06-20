@@ -420,7 +420,7 @@ f() # output: 3
 ```
 In above, when we change the *x* inside the function to refer to another value, it only does that in the local scope, the global *x* remains unmodified and untouched.
 
-> Mutable values can be changed using global names in local scope
+> Mutable values can be changed in-place using global names in local scope
 
 ```python
 x = [1, 2]
