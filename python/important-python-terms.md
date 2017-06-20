@@ -9,9 +9,11 @@ s = 'string'
 ```
 In above, `45` and `string` are two values. `a = 45` creates an `int` object with value `45` and is then referred by the name `a` where `s = 'string'` creates an `str` object with value `string` and referred by the name `s`.
 
+> Python values are stored in memory and can not be deleted
+
 One does not need to manage memory for the values. Python automatically allocates and deallocates memories as necessary.
 
-> Same immutable value is not allocated twice within a scope (in most of the Python implementations including the default CPython)
+> Same immutable value is not allocated twice (in most of the Python implementations including the default CPython)
 
 ```python
 a = 9
@@ -121,7 +123,15 @@ x = [1, 2]  # now x refers to a list
 
 > Python names or variables have no type
 
-Python is dynamically typed i.e a name or variable can refer to any type of value at any time. For example, *x* can refer to an int, a float, a list, an arbitrary user define type or any type at all.
+Python is dynamically typed i.e a name or variable can refer to any type of value at any time. For example, *x* can refer to an int, a float, a list, an arbitrary user defined type or any type at all.
+
+> Deleting a name or variable does not delete its value
+
+```python
+x = 2
+del x
+```
+In above, `del x` deletes (undefines/unsets) the name *x* but it does not delete the value that was being referenced by *x*. If there is no name referencing the value `2` then the Python garbage collector will delete the value automatically.
 
 # Object
 
