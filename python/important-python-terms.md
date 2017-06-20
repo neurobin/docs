@@ -194,12 +194,12 @@ In above, `a = 2 * 3` is not an expression but an statement while `2 * 3` is an 
 
 # Assignment
 
-> Assignment is an statement that assigns a name to the reference to a value or object.
+> Assignment is an statement that assigns a name to the reference to an object.
 
 ```python
 var = 'A sample string'
 ```
-Here, the name *var* refers to the value `A sample string`.
+Here, the name *var* refers to the `str` object `A sample string`.
 
 > Assignment never copies data
 
@@ -220,7 +220,7 @@ object1 = object2
 # object1 refers the same thing as object2
 ```
 
-> Assignment to a different value always updates the reference
+> Assignment to different values always updates the reference
 
 ```python
 x = 7
@@ -231,7 +231,15 @@ print(y) # output: 7
 ```
 The reference *x* was updated to refer to a new value `x + 2`.
 
-> Different names assigned to the same **immutable** value directly by the value (not name) can share the reference
+> Assignment does not change values in-place
+
+```python
+lst = [1, 2]
+lst = lst + [3]
+```
+In above, `[3]` is not appended to `lst` like it seems to be, `lst` and  `[3]` is being concatenated to create a new list and the reference `lst` is updated to refer to the new list.
+
+> Names assigned by the same **immutable** value (not name) can share the reference
 
 ```python
 x = 2
@@ -243,7 +251,7 @@ print(s1 is s2) # output: True
 ```
 In above, both *x* and *y* refer to the same object (same for *s1* and *s2*).
 
-> Different names assigned to the same **mutable** value directly by the value (not name) always refer to different values altogether
+> Names assigned by the same **mutable** value (not name) always refer to different objects altogether
 
 ```python
 lst1 = [1, 2]
@@ -294,47 +302,39 @@ import x
 ```
 Each of the above is an assignment.
 
+# Code block
 
+A code block is a piece of code that the python interpreter executes as a unit. The following are examples of code blocks:
 
-# Scope
-
-The scope for a variable or name is the region where it is accessible or visible.
-
-> Values don't have any scope, only names have
-
-A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local i.e they can be either visible to all or only to a certain region.
-
-> Global names are accessible to local scope but not modifiable
-
-```python
-x = 4
-def f1():
-    if x == 4:
-        return x # returning the global x
-    else:
-        return 0
-
-def f2():
-    x = x + 3 # UnboundLocalError: local variable 'x' referenced before assignment
-    return x
-
-f1() # output: 4
-f2() # UnboundLocalError: local variable 'x' referenced before assignment
-```
-
-> Global names become local names if assigned anew
-
-```python
-x = 4
-def f():
-    x = 3 # This x is no longer a global name
-    return x # returning the local x
-```
-
+* A module
+* A function body
+* A class definition
+* Each command in interactive Python interpreter
+* A script file
+* A script command (passed with `-c` option of the Python interpreter)
+* String argument passed to the built-in `eval()` and `exec()`
 
 # Function
 
-Function is an isolated block of code that performs some operation.
+Function is an isolated block of code that performs some operation. We generally move our repetitive codes that we execute frequently to a dedicated code block so that we can re-use the block whenever necessary.
+
+> We use a special keyword `def` to define a function
+
+```python
+def function_name(arguments):
+    function body
+```
+
+> Functions can change mutable values in-place
+
+```python
+def f(lst):
+    lst.extend([3, 4])
+
+x = [1, 2]
+f(x)        # changing x in-place
+print(x)    # output: [1, 2, 3, 4]
+```
 
 
 
@@ -353,3 +353,79 @@ def func(a, b, c):
     return a + b - c
 ```
 In above, `a`, `b` and `c` are parameters.
+
+
+
+# Scope
+
+The scope for a variable or name is the region where it is accessible or visible.
+
+> Values don't have any scope, only names have
+
+A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local.
+
+> Global names are accessible to local scope
+
+```python
+x = 4
+def f1():
+    if x == 4:
+        return x + 2 # returning the global x + 2
+    else:
+        return 0
+
+f1() # output: 6
+```
+
+> Global names are not treated as global in local assignment
+
+```python
+x = 4
+def f2():
+    x = x + 3 # UnboundLocalError: local variable 'x' referenced before assignment
+    return x
+
+f2() # UnboundLocalError: local variable 'x' referenced before assignment
+```
+In above, when used in assignment, *x* is being treated as a local name not global.
+
+> Global names become local in local assignment
+
+```python
+x = 4
+def f():
+    x = 3 # This x is no longer a global name
+    return x # returning the local x
+
+f() # output: 3
+```
+In above, when we change the *x* inside the function to refer to another value, it only does that in the local scope, the global *x* remains unmodified and untouched.
+
+> Mutable values can be changed using global names in local scope
+
+```python
+x = [1, 2]
+def f():
+    x.append(3)
+
+f()
+print(x) # output: [1, 2, 3]
+```
+The global name *x* can not be re-assigned but the value it refers to, can be changed in-place if mutable.
+
+> Global names become both accessible and modifiable if declared with the `global` keyword in local scope
+
+```python
+x = 4
+def f2():
+    global x
+    x = x + 3 # This is being treated as global
+    return x
+
+f2() # output: 7
+```
+In above, when we change the *x* inside the function to refer to another value, the global *x* is changed i.e *x* inside `f2()` is totally global now.
+
+
+
+
