@@ -278,7 +278,7 @@ So far, we have seen assignment with only the assignment operator `=`.
 > There are lots of ways of assignment aside from the assignment operator `=`
 
 ```python
-# assigns the name x to each item from an iterator in a loop
+# assigns the name x to each item from an iterable in a loop
 for x in iterator
 
 # assigns a class to the name x
