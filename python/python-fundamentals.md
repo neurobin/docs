@@ -381,7 +381,26 @@ The scope for a variable or name is the region where it is accessible or visible
 
 > Values don't have any scope, only names have scopes
 
-A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local.
+A value can be referenced by a global or local variable alike, thus the term 'scope' does not make any sense for values. Only names can be global or local. This is the reason you can modify a value from anywhere.
+
+> Changing a global name to reference to some other value is not permitted but the value itself can be changed.
+
+```python
+lst = [1, 2, 3, ] # A new list
+
+def f():
+    # you can not do the following:
+    # Changing a global name to reference to some other value is not permitted
+    # lst = lst + [4, 5]
+    
+    # but you can do the following:
+    # to change the value itself
+    lst.extend([4, 5])
+
+f() # calling f()
+
+print(lst)
+```
 
 > Global names are accessible to local scope
 
@@ -446,5 +465,99 @@ f2() # output: 7
 In above, when we change the *x* inside the function to refer to another value, the global *x* is changed i.e *x* inside `f2()` is totally global now.
 
 
+# Indentation
 
+We separate blocks of python code by indentation. Consider the following example:
+
+```python
+if a is True:
+    # inside if
+    b = c + d
+print(b) # outside if
+```
+
+Notice that there is no opening or closing bracket, there's an `if` but no `endif` or anything that appears to close this `if`. So how does this work actually?
+
+Now, notice that the block of code inside `if` statement is indented with a certain amount of whitespaces. This little indentation tells python that the indented block belongs to the `if` statement.
+
+> * It is necessary to have the same indentation with the same amount of whitespaces.
+> * Tab is not equal to space, you can not put 4 spaces in a line and then a tab in the next and expect it to work correctly.
+> * Use either tab or space not both.
+> * The colon (`:`) after the end of the `if` conditional is mandatory.
+
+Some more examples:
+
+```python
+if a is True:
+    #inside first if
+    if b is True:
+        #inside second if
+        if c is True:
+            #inside third if
+            print("Working with nested if")
+        #inside second if but outside third if
+    #inside first if but outside second if
+#outside all ifs
+
+for i in xrange(1,10):
+    print(i)
+    # inside for loop
+# outside for loop
+
+while i <= 9:
+    print(i)
+    #inside while loop
+#outside while loop
+```
+
+> Indentation **does not** create a new scope.
+
+In languages like C++, `if` statements, `for` loop, `while` loop create new scopes in their body, but in python they do not. Consider the following example:
+
+```python
+x = 0
+for i in xrange(1,10):
+    print(i)
+    x = i + 1
+print(x)
+```
+
+You are probably expecting the second `print` function to print `0`, but it won't, rather it will print `10`. Now that's strange right?
+
+Well, in python, indentation does not create new scopes like the `{}` does in C++:
+
+```cpp
+{
+    //This code is inside a new scope
+    std::vector<int> a; //a is constructed here
+} //a is destroyed here
+a.push_back(32); //error, a is not declared in this scope.
+```
+
+Now in python, see these magics:
+
+```python
+for i in xrange(1,10):
+    print(i)
+    x = i + 1
+print(x) # It's OK!! no error at all
+
+if True:
+    x = 5
+else:
+    y = 5
+print(x) # OK
+print(y) # NOT OK: NameError: name 'y' is not defined
+```
+
+Why did `print(y)` gave error? Spooky huh? Well, don't be afraid, no paranormal activities are in work here.
+
+This is how it works:
+
+1. python enters into `if True`
+2. defines the name x with value 5
+3. exits the `if`
+4. does not enter into `else`, thus the `y = 5` never gets executed and thus `y` never gets defined.
+5. print x
+6. can not print y because it didn't reach the point where it could be defined.
 
