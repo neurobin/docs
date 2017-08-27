@@ -1,4 +1,6 @@
 
+<div id="value"></div>
+
 # Value
 
 Python values are data that we refer by names.
@@ -66,6 +68,10 @@ print(lst2) # output: [1, 2]
 ```
 `lst1 + [3]` creates a new list by adding an elemnt `3` at the end of `lst1` and assigns the result to `lst1`, thus `lst1` no longer refers to the same value. `lst2` still retains the reference to the value that was referred by `lst1` previously.
 
+
+<div id="immutable-values"></div>
+
+
 ## Immutable values
 
 Values that can not be changed in-place are called immutable. Changing an immutable value always creates a new value:
@@ -78,6 +84,8 @@ print(x) # output: 7
 print(y) # output: 6
 ```
 In above, `x + 1` creates a new value (`7`) and a reference to this new value is assigned to `x` while `y` still retains the reference to the previous value.
+
+<div id="mutable-values"></div>
 
 ## Mutable values
 
@@ -92,6 +100,7 @@ print(lst2) # output: [1, 2, 3]
 ```
 Here, the `append()` method changes the list in-place, thus no new list is being created.
 
+<div id="variable-name-or-reference"></div>
 
 # Variable, Name or Reference
 
@@ -141,6 +150,8 @@ del x
 ```
 In above, `del x` deletes (undefines/unsets) the name *x* but it does not delete the value that was being referenced by *x*. If there is no name referencing the value `2` then the Python garbage collector will delete the value automatically.
 
+<div id="object"></div>
+
 # Object
 
 In python, everything that can be assigned to a variable or passed as an argument to a function is an object. Thus values themselves are objects, e.g `5` is an `int` object, `'I am a string'` is an `str` object etc.
@@ -163,12 +174,13 @@ The literal `I am a string` is a value, and when it is used in Python i.e writte
 All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
 
 
+<div id="expression"></div>
 
 # Expression
 
 Expression is something that operates on values and can yield a result. For example, `2 + 3` is an expression which can add two numbers to produce the sum.
 
-
+<div id="statement"></div>
 
 # Statement
 
@@ -190,7 +202,7 @@ a = 2 * 3
 ```
 In above, `a = 2 * 3` is not an expression but an statement while `2 * 3` is an expression.
 
-
+<div id="assignment"></div>
 
 # Assignment
 
@@ -302,6 +314,8 @@ import x
 ```
 Each of the above is an assignment.
 
+<div id="code block"></div>
+
 # Code block
 
 A code block is a piece of code that the python interpreter executes as a unit. The following are examples of code blocks:
@@ -313,6 +327,8 @@ A code block is a piece of code that the python interpreter executes as a unit. 
 * A script file
 * A script command (passed with `-c` option of the Python interpreter)
 * String argument passed to the built-in `eval()` and `exec()`
+
+<div id="function"></div>
 
 # Function
 
@@ -356,7 +372,7 @@ f(X)        # output: <class '__main__.X'>
 ```
 In python functions are first class objects.
 
-
+<div id="argument-and-parameter"></div>
 
 # Argument & Parameter
 
@@ -373,7 +389,7 @@ def func(a, b, c):
 ```
 In above, `a`, `b` and `c` are parameters.
 
-
+<div id="scope"></div>
 
 # Scope
 
@@ -464,6 +480,7 @@ f2() # output: 7
 ```
 In above, when we change the *x* inside the function to refer to another value, the global *x* is changed i.e *x* inside `f2()` is totally global now.
 
+<div id="indentation"></div>
 
 # Indentation
 
