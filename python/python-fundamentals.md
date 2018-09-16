@@ -1,6 +1,4 @@
 
-<div id="value"></div>
-
 # Value
 
 Python values are data that we refer by names.
@@ -15,7 +13,7 @@ In above, `45` and `string` are two values. `a = 45` creates an `int` object wit
 
 One does not need to manage memory for the values. Python automatically allocates and deallocates memories as necessary.
 
-> Same immutable value is not allocated twice (in most of the Python implementations including the default CPython)
+> identical immutable values are not allocated twice (in most of the Python implementations including the default CPython)
 
 ```python
 a = 9
@@ -69,7 +67,7 @@ print(lst2) # output: [1, 2]
 `lst1 + [3]` creates a new list by adding an elemnt `3` at the end of `lst1` and assigns the result to `lst1`, thus `lst1` no longer refers to the same value. `lst2` still retains the reference to the value that was referred by `lst1` previously.
 
 
-<div id="immutable-values"></div>
+
 
 
 ## Immutable values
@@ -85,7 +83,7 @@ print(y) # output: 6
 ```
 In above, `x + 1` creates a new value (`7`) and a reference to this new value is assigned to `x` while `y` still retains the reference to the previous value.
 
-<div id="mutable-values"></div>
+
 
 ## Mutable values
 
@@ -100,7 +98,7 @@ print(lst2) # output: [1, 2, 3]
 ```
 Here, the `append()` method changes the list in-place, thus no new list is being created.
 
-<div id="variable-name-or-reference"></div>
+
 
 # Variable, Name or Reference
 
@@ -150,7 +148,7 @@ del x
 ```
 In above, `del x` deletes (undefines/unsets) the name *x* but it does not delete the value that was being referenced by *x*. If there is no name referencing the value `2` then the Python garbage collector will delete the value automatically.
 
-<div id="object"></div>
+
 
 # Object
 
@@ -174,13 +172,13 @@ The literal `I am a string` is a value, and when it is used in Python i.e writte
 All data types such as *bool*, *int*, *str*; all classes, modules and functions are objects and almost all objects have attributes and methods.
 
 
-<div id="expression"></div>
+
 
 # Expression
 
 Expression is something that operates on values and can yield a result. For example, `2 + 3` is an expression which can add two numbers to produce the sum.
 
-<div id="statement"></div>
+
 
 # Statement
 
@@ -202,7 +200,7 @@ a = 2 * 3
 ```
 In above, `a = 2 * 3` is not an expression but an statement while `2 * 3` is an expression.
 
-<div id="assignment"></div>
+
 
 # Assignment
 
@@ -215,7 +213,7 @@ Here, the name *var* refers to the `str` object `'A sample string'`.
 
 > Assignment never copies data
 
-If you come from a C++ background, you will find out that Python assignment can be very different compared to C++ assignment.
+If you come from a C++ background, you will find that Python assignment can be very different compared to C++ assignment.
 
 While C++ assignment performs copy:
 
@@ -251,7 +249,7 @@ lst = lst + [3]
 ```
 In above, `[3]` is not appended to `lst` like it seems to be, `lst` and  `[3]` is being concatenated to create a new list and the reference `lst` is updated to refer to the new list.
 
-> Names assigned by the same **immutable** value (not name) can share the reference
+> Names assigned by identical **immutable** values can share the reference
 
 ```python
 x = 2
@@ -263,7 +261,7 @@ print(s1 is s2) # output: True
 ```
 In above, both *x* and *y* refer to the same object (same for *s1* and *s2*).
 
-> Names assigned by the same **mutable** value (not name) always refer to different objects altogether
+> Names assigned by identical **mutable** values always refer to different objects altogether
 
 ```python
 lst1 = [1, 2]
@@ -314,7 +312,7 @@ import x
 ```
 Each of the above is an assignment.
 
-<div id="code block"></div>
+
 
 # Code block
 
@@ -328,7 +326,7 @@ A code block is a piece of code that the python interpreter executes as a unit. 
 * A script command (passed with `-c` option of the Python interpreter)
 * String argument passed to the built-in `eval()` and `exec()`
 
-<div id="function"></div>
+
 
 # Function
 
@@ -372,7 +370,7 @@ f(X)        # output: <class '__main__.X'>
 ```
 In python functions are first class objects.
 
-<div id="argument-and-parameter"></div>
+
 
 # Argument & Parameter
 
@@ -389,7 +387,7 @@ def func(a, b, c):
 ```
 In above, `a`, `b` and `c` are parameters.
 
-<div id="scope"></div>
+
 
 # Scope
 
@@ -480,7 +478,7 @@ f2() # output: 7
 ```
 In above, when we change the *x* inside the function to refer to another value, the global *x* is changed i.e *x* inside `f2()` is totally global now.
 
-<div id="indentation"></div>
+
 
 # Indentation
 
@@ -532,14 +530,13 @@ while i <= 9:
 In languages like C++, `if` statements, `for` loop, `while` loop create new scopes in their body, but in python they do not. Consider the following example:
 
 ```python
-x = 0
+i = 0
 for i in xrange(1,10):
     print(i)
-    x = i + 1
-print(x)
+print(i)
 ```
 
-You are probably expecting the second `print` function to print `0`, but it won't, rather it will print `10`. Now that's strange right?
+You are probably expecting the second `print` function to print `0`, but it won't, rather it will print `9`. Now that's strange right?
 
 Well, in python, indentation does not create new scopes like the `{}` does in C++:
 
