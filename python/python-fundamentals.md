@@ -530,13 +530,12 @@ while i <= 9:
 In languages like C++, `if` statements, `for` loop, `while` loop create new scopes in their body, but in python they do not. Consider the following example:
 
 ```python
-i = 0
 for i in xrange(1,10):
     print(i)
 print(i)
 ```
 
-You are probably expecting the second `print` function to print `0`, but it won't, rather it will print `9`. Now that's strange right?
+You are probably expecting the second `print` function to throw some error as variable `i` shouldn't be declared in this scope, but it won't, rather it will print `9`. Now that's strange right?
 
 Well, in python, indentation does not create new scopes like the `{}` does in C++:
 
