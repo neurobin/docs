@@ -574,3 +574,10 @@ This is how it works:
 5. print x
 6. can not print y because it didn't reach the point where it could be defined.
 
+
+
+# Book recommendations
+
+1. [Learning Python by Mark Lutz](https://amzn.to/2PJpmE1)
+2. [Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming by Eric Matthes](https://amzn.to/329e9yS)
+3. [Python Pocket Reference: Python In Your Pocket (Pocket Reference (O'Reilly)) by Mark Lutz](https://amzn.to/322ggER)
