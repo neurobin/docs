@@ -578,6 +578,6 @@ This is how it works:
 
 # Book recommendations
 
-1. [Learning Python by Mark Lutz](https://amzn.to/2PJpmE1)
-2. [Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming by Eric Matthes](https://amzn.to/329e9yS)
-3. [Python Pocket Reference: Python In Your Pocket (Pocket Reference (O'Reilly)) by Mark Lutz](https://amzn.to/322ggER)
+1. [Learning Python by Mark Lutz](https://www.amazon.com/Learning-Python-5th-Mark-Lutz/dp/1449355730/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=neurobin-20&linkId=a5a4f655fe6d8c68d75c76ab70cde802&language=en_US)
+2. [Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming by Eric Matthes](https://www.amazon.com/Python-Crash-Course-2nd-Edition/dp/1593279280/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=neurobin-20&linkId=9a26b66caee1bc6d2c5d9bd598abee4f&language=en_US)
+3. [Python Pocket Reference: Python In Your Pocket (Pocket Reference (O'Reilly)) by Mark Lutz](https://www.amazon.com/dp/1449357016/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=neurobin-20&linkId=e958d05d33afafaec2de9bf851d18df3&language=en_US)
