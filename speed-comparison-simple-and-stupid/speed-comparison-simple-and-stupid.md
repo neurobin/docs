@@ -12,7 +12,7 @@ CPython (Python) | 69.188
 
 # Our stupid program:
 
-```nodejs tab="NodeJS"
+```js tab="NodeJS"
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
