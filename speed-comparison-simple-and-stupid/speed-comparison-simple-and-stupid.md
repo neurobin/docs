@@ -12,10 +12,12 @@ CPython (Python) | 69.188
 
 # Web framework
 
-Framework | Time in second to render the default page
---------- | -----------------------------------------
+Framework | Time in seconds to render the default page
+--------- | ------------------------------------------
 Django (Python) | 0.009
 Express (nodejs) | 0.012
+Django (Bare minimal without template) | 0.006
+Express (Bare minimal without template) | 0.006
 
 
 # Our stupid program:
