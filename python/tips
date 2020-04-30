@@ -18,3 +18,4 @@ Rounding towards negative infinity, though different from most languages, adds c
 * A global name can not be changed to refer a different value in a local scope without declaring it specifically as global regardless whether the value is mutable or immutable.
 * Global mutable values can be changed in local scope by using a name or reference to the value without declaring the name as global.
 * You can create dict from a list of tuples.
+* deepcopy can not copy the class itself. use this: CopyOfB = type('CopyOfB', B.__bases__, dict(B.__dict__))
