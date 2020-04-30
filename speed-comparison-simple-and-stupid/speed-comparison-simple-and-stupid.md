@@ -10,10 +10,18 @@ PyPy (Python) | 10.590
 CPython (Python) | 69.188
 
 
+# Web framework
+
+Framework | Time in second to render the default page
+--------- | -----------------------------------------
+Django (Python) | 0.009
+Express (nodejs) | 0.012
+
+
 # Our stupid program:
 
 ```js tab="NodeJS"
-function randomIntFromInterval(min, max) { // min and max included 
+function randomIntFromInterval(min, max) { // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 let i = 0;
