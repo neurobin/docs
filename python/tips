@@ -19,3 +19,5 @@ Rounding towards negative infinity, though different from most languages, adds c
 * Global mutable values can be changed in local scope by using a name or reference to the value without declaring the name as global.
 * You can create dict from a list of tuples.
 * deepcopy can not copy the class itself. use this: CopyOfB = type('CopyOfB', B.__bases__, dict(B.__dict__))
+
+* do not use empty tuple () as default value of a method param. def fun(a=(), b=(), c=None) --> will swallow c into b
