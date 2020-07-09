@@ -20,4 +20,4 @@ Rounding towards negative infinity, though different from most languages, adds c
 * You can create dict from a list of tuples.
 * deepcopy can not copy the class itself. use this: CopyOfB = type('CopyOfB', B.__bases__, dict(B.__dict__))
 
-* do not use empty tuple () as default value of a method param. def fun(a=(), b=(), c=None) --> will swallow c into b
+
